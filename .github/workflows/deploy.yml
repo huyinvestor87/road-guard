@@ -23,6 +23,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Stamp cache-busting version
+        run: |
+          set -euo pipefail
+          VERSION="$(tr -d '[:space:]' < VERSION)+$(git rev-parse --short HEAD)"
+          echo "Stamping asset version: $VERSION"
+          sed -i "s/%%VERSION%%/$VERSION/g" index.html app.js sw.js
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact

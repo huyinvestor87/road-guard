@@ -22,15 +22,28 @@ For GitHub Pages, publish the feature branch temporarily for testing or merge it
 
 ## Data
 
-`data.js` currently contains **demo data only**. Do not use the demo camera or speed-limit entries for real driving decisions.
+`data.js` (used by **Demo mode** only) ships a curated set of real, named roads with
+posted speed limits for Ho Chi Minh City, Binh Duong, and Vung Tau, sourced from
+OpenStreetMap (© OpenStreetMap contributors, ODbL). Road speed limits can change —
+always defer to actual signage.
 
-The next milestone is to replace the demo seed with verified data for:
+`cameras` in `data.js` ships **empty on purpose**: no traffic-enforcement camera
+locations are currently mapped in OpenStreetMap for these areas, and inventing
+coordinates would be unsafe. See `docs/next-steps.md` for how to add a verified
+camera source.
 
-- Ho Chi Minh City
-- Binh Duong
-- Vung Tau
+Live driving (the "Bắt đầu cảnh báo" button, not Demo mode) does not use `data.js`
+at all — it queries the OpenStreetMap Overpass API in real time for roads and
+cameras near the GPS position (`osm.js`).
 
-The application code deliberately keeps road/camera data separate so the dataset can later be generated from public sources or synced from a backend without rewriting the GPS warning engine.
+## Cache-busting
+
+Static assets are referenced with a `?v=%%VERSION%%` placeholder in `index.html`,
+`app.js`, and `sw.js`. The GitHub Pages deploy workflow stamps that placeholder
+with `<VERSION file>+<short commit sha>` before publishing, so every deploy gets
+a unique version and browsers/service worker always pick up the latest files. Bump
+`VERSION` for a human-readable release marker; the commit sha guarantees
+uniqueness even without a bump.
 
 ## Branch workflow
 

@@ -1,5 +1,5 @@
-import { roadSegments as demoRoads, cameras as demoCameras } from './data.js?v=2';
-import { loadNearbyOsm, osmCache } from './osm.js?v=1';
+import { roadSegments as demoRoads, cameras as demoCameras } from './data.js?v=%%VERSION%%';
+import { loadNearbyOsm, osmCache } from './osm.js?v=%%VERSION%%';
 
 const $=id=>document.getElementById(id); const ui={speed:$('speedValue'),limit:$('limitBadge'),speedCard:document.querySelector('.speed-card'),cameraCard:$('cameraCard'),cameraTitle:$('cameraTitle'),cameraDistance:$('cameraDistance'),gpsState:$('gpsState'),heading:$('headingValue'),accuracy:$('accuracyValue'),dataState:$('dataState'),start:$('startButton'),demo:$('demoButton'),sound:$('soundButton'),status:$('statusText')};
 let watchId=null,soundEnabled=true,demoTimer=null,previousPosition=null,demoMode=false; const lastSpoken=new Map();

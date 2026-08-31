@@ -3,8 +3,14 @@
 ## Road segment
 
 ```js
-{ id, name, lat, lng, radiusMeters, speedLimit }
+{ id, name, area, lat, lng, radiusMeters, speedLimit, source, geometry }
 ```
+
+`geometry` (optional) is an ordered array of `{lat, lng}` points; when present, the
+app matches against the nearest point on the polyline instead of the single
+`lat`/`lng` center, so `radiusMeters` can stay tight (actual road width + GPS
+error) instead of covering a whole area. `area` and `source` are informational
+(e.g. `"TP.HCM"`, `"OpenStreetMap"`) and shown in the status line.
 
 ## Camera
 
