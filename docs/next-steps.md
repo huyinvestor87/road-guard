@@ -26,3 +26,11 @@
 5. Validate alert thresholds during passenger-assisted road tests.
 6. ~~Publish a test build with GitHub Pages.~~ Done — deploys automatically from
    `main` via `.github/workflows/deploy.yml`.
+7. ~~Fix live-mode road misidentification (e.g. a hẻm branching off a quốc lộ
+   winning the match instead of the quốc lộ itself).~~ Done — `osm.js` now
+   scales each road's match radius to its OSM `highway` class instead of a
+   flat 350 m for everything, and `currentRoad()` in `app.js` breaks
+   near-ties toward the larger-radius (more major) road. Still worth
+   field-testing on other real routes — road-splitting and Vietnamese
+   addressing conventions (an alley literally named after the highway it
+   meets) vary a lot by area.
