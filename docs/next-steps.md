@@ -13,8 +13,16 @@
 3. ~~Upgrade road matching from nearest point/radius to polyline/segment
    matching.~~ Done for roads with a `geometry` array (see
    `docs/data-format.md`); cameras still use point/radius.
-4. Add import tooling for public datasets (script the Overpass query used to
-   regenerate `data.js`, rather than the one-off process used so far).
+4. ~~Add import tooling for public datasets.~~ Done —
+   `scripts/import-osm-data.mjs` (config in `scripts/osm-areas.json`) queries
+   Overpass for named roads with a posted `maxspeed` plus any mapped
+   speed-camera/enforcement nodes, and regenerates a `data.js`-shaped file.
+   It automatically picks roads by geometry size per area, which is a
+   different (also real, not guessed) selection than the hand-curated list
+   currently in `data.js` — review the diff before adopting a regenerated
+   file rather than committing it blindly. Public Overpass mirrors are
+   sometimes rate-limited; the script retries across several and
+   `OVERPASS_ENDPOINT` can point it at a specific/local one.
 5. Validate alert thresholds during passenger-assisted road tests.
 6. ~~Publish a test build with GitHub Pages.~~ Done — deploys automatically from
    `main` via `.github/workflows/deploy.yml`.

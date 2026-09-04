@@ -1,0 +1,26 @@
+[
+  {
+    "area": "TP.HCM",
+    "idPrefix": "osm-hcmc",
+    "center": { "lat": 10.7769, "lng": 106.7009 },
+    "radiusMeters": 2500,
+    "highwayFilter": "^(motorway|trunk|primary|secondary|tertiary|primary_link|secondary_link|tertiary_link)$",
+    "maxRoads": 12
+  },
+  {
+    "area": "Bình Dương",
+    "idPrefix": "osm-binhduong",
+    "center": { "lat": 10.9804, "lng": 106.6519 },
+    "radiusMeters": 6000,
+    "highwayFilter": "^(motorway|trunk|primary|secondary|tertiary|primary_link|secondary_link)$",
+    "maxRoads": 6
+  },
+  {
+    "area": "Vũng Tàu",
+    "idPrefix": "osm-vungtau",
+    "center": { "lat": 10.3667, "lng": 107.0843 },
+    "radiusMeters": 6000,
+    "highwayFilter": "^(motorway|trunk|primary|secondary|tertiary|primary_link|secondary_link)$",
+    "maxRoads": 7
+  }
+]

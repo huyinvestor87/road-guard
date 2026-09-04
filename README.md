@@ -36,6 +36,19 @@ Live driving (the "Bắt đầu cảnh báo" button, not Demo mode) does not use
 at all — it queries the OpenStreetMap Overpass API in real time for roads and
 cameras near the GPS position (`osm.js`).
 
+To refresh `data.js` from a fresh OSM snapshot:
+
+```sh
+node scripts/import-osm-data.mjs --dry-run   # preview counts, no write
+node scripts/import-osm-data.mjs             # writes data.js
+```
+
+Areas/radii/highway filters live in `scripts/osm-areas.json`. Review the diff
+before committing — the script's road selection can differ from a
+hand-curated list, and OSM data can be wrong or vandalized. Public Overpass
+mirrors get rate-limited; set `OVERPASS_ENDPOINT` to try a specific mirror
+first.
+
 ## Cache-busting
 
 Static assets are referenced with a `?v=%%VERSION%%` placeholder in `index.html`,
